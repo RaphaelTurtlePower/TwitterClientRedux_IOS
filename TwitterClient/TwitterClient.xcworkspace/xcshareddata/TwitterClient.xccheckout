@@ -12,20 +12,24 @@
 	<dict>
 		<key>AAEF5D6A849C8DD639148B35088490226FC8BF73</key>
 		<string>github.com:RaphaelTurtlePower/TwitterClient.git</string>
+		<key>F1D574D807D6870EDB4A9DC52099726756999FEE</key>
+		<string>github.com:RaphaelTurtlePower/TwitterClientRedux_IOS.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>TwitterClient/TwitterClient.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>AAEF5D6A849C8DD639148B35088490226FC8BF73</key>
+		<string>../../../TwitterClient</string>
+		<key>F1D574D807D6870EDB4A9DC52099726756999FEE</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>github.com:RaphaelTurtlePower/TwitterClient.git</string>
+	<string>github.com:RaphaelTurtlePower/TwitterClientRedux_IOS.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>AAEF5D6A849C8DD639148B35088490226FC8BF73</string>
+	<string>F1D574D807D6870EDB4A9DC52099726756999FEE</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
@@ -35,6 +39,14 @@
 			<string>AAEF5D6A849C8DD639148B35088490226FC8BF73</string>
 			<key>IDESourceControlWCCName</key>
 			<string>TwitterClient</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>F1D574D807D6870EDB4A9DC52099726756999FEE</string>
+			<key>IDESourceControlWCCName</key>
+			<string>TwitterClientRedux_IOS</string>
 		</dict>
 	</array>
 </dict>
