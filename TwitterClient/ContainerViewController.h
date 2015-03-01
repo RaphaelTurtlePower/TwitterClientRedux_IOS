@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TweetsViewController.h"
+#import "MenuViewController.h"
 
-@interface ContainerViewController : UIViewController
+@interface ContainerViewController : UIViewController <ContainerViewControllerDelegate>
+@property (strong, nonatomic) UIViewController *menuViewController;
+@property (strong, nonatomic) UIViewController *tweetsViewController;
+- (id) initWithTweetController:(UIViewController *) tvc withMenu: (UIViewController *) mvc;
 
 @end

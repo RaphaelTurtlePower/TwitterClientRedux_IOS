@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Tweet.h"
-
+#import "ContainerViewControllerDelegate.h"
 @class TweetViewCell;
 
 @protocol TweetViewCellDelegate <NSObject>
@@ -29,4 +29,6 @@
 
 @property (nonatomic, weak) id<TweetViewCellDelegate> delegate;
 - (void)initWithTweet:(Tweet *)tweet parent:(UIViewController*)parent;
+@property (nonatomic, weak) id<ContainerViewControllerDelegate> profileViewDelegate;
+
 @end

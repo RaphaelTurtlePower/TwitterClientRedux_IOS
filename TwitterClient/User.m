@@ -24,6 +24,10 @@ NSString * const UserDidLoginNotification = @"UserDidLoginNotification";
         self.screenName = dictionary[@"screen_name"];
         self.profileImageUrl = dictionary[@"profile_image_url"];
         self.tagLine = dictionary[@"description"];
+        self.friendCount = [dictionary[@"friends_count"] integerValue];
+        self.followerCount = [dictionary[@"followers_count"] integerValue];
+        self.statusCount = [dictionary[@"statuses_count"] integerValue];
+        self.profileBackgroundImageURL = [NSString stringWithFormat:@"%@/mobile_retina", dictionary[@"profile_banner_url"]];
     }
     return self;
 }

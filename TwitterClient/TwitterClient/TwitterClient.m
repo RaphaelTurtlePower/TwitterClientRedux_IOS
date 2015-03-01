@@ -75,11 +75,18 @@ NSString* const kTwitterBaseUrl=@"https://api.twitter.com";
     }];
 }
 
-- (void)homeTimelineWithParams:(NSDictionary *)params completion:(void(^)(NSArray *tweets, NSError *error))completion {
-    [self GET:@"1.1/statuses/home_timeline.json" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+- (void)getTimelineWithParams:(NSDictionary *)params home:(BOOL)home completion:(void(^)(NSArray *tweets, NSError *error))completion {
+    
+    NSString* endpoint = @"1.1/statuses/home_timeline.json";
+    if(!home){
+        endpoint = @"1.1/statuses/mentions_timeline.json";
+    }
+
+    [self GET:endpoint parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSArray *tweets = [Tweet tweetsWithArray:responseObject];
         completion(tweets, nil);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"Error calling Home Timeline");
         completion(nil, error);
     }];
 }
@@ -105,6 +112,7 @@ NSString* const kTwitterBaseUrl=@"https://api.twitter.com";
         NSLog(@"Favorited a Tweet ! %@",responseObject);
         completion(responseObject,nil);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error calling Favorite Tweet");
         completion(nil, error);
     }];
     
@@ -116,12 +124,20 @@ NSString* const kTwitterBaseUrl=@"https://api.twitter.com";
     [self POST:api parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         completion(responseObject,nil);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error calling Retweet Tweet");
         completion(nil, error);
     }];
     
 }
 
-
-
+- (void) mentionsTimelineWithParams:(NSDictionary *)params completion:(void(^)(NSArray *tweets, NSError *error))completion {
+    [self GET:@"1.1/statuses/home_timeline.json" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSArray *tweets = [Tweet tweetsWithArray:responseObject];
+        completion(tweets, nil);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error calling Home Timeline");
+        completion(nil, error);
+    }];
+}
 
 @end

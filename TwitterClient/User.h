@@ -17,6 +17,12 @@ extern NSString * const UserDidLoginNotification;
 @property (nonatomic, strong) NSString *profileImageUrl;
 @property (nonatomic, strong) NSString *tagLine;
 
+//New data
+@property NSInteger followerCount;
+@property NSInteger friendCount;
+@property NSInteger statusCount;
+@property (strong, nonatomic) NSString *profileBackgroundImageURL;
+
 - (id)initWithDictionary:(NSDictionary *)dictionary;
 + (User *)currentuser;
 + (void)setCurrentUser:(User *)currentuser;

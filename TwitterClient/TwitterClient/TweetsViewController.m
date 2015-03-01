@@ -17,10 +17,19 @@
 
 @interface TweetsViewController ()
 @property (strong, nonatomic) NSMutableArray* tweets;
-
+@property (nonatomic, assign) BOOL isHomeTimeline;
+@property (strong,nonatomic) NSString *type;
 @end
 
 @implementation TweetsViewController
+
+- (id)initAsHome:(BOOL) isHome{
+    self = [self init];
+    self.isHomeTimeline = isHome;
+    self.type = (isHome) ? @"Home" : @"Mentions";
+    NSLog([@"This is a Type: " stringByAppendingString:self.type]);
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -31,7 +40,7 @@
     [self.tweetList registerNib:[UINib nibWithNibName:@"TweetViewCell" bundle:nil] forCellReuseIdentifier:@"TweetViewCell"];
     self.tweetList.estimatedRowHeight = 100;
     self.tweetList.rowHeight = UITableViewAutomaticDimension;
-    self.title = @"Home";
+    self.title = self.type;
     UIImage *myIcon = [self imageWithImage:[UIImage imageNamed:@"hamburger"] scaledToSize:CGSizeMake(30,30) ];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:myIcon style:UIBarButtonItemStylePlain target:self action:@selector(hamburgerMenuCalled:)];
     
@@ -60,8 +69,9 @@
             params = [[NSDictionary alloc] initWithObjectsAndKeys:tweet.id, @"max_id", nil];
         }
     }
-    
-    [[TwitterClient sharedInstance] homeTimelineWithParams:params completion:^(NSArray *tweets, NSError *error) {
+    NSLog([@"This is a Type: " stringByAppendingString:self.type]);
+
+    [[TwitterClient sharedInstance] getTimelineWithParams:params home:self.isHomeTimeline completion:^(NSArray *tweets, NSError *error) {
         if(refresh){
             self.tweets = [[tweets arrayByAddingObjectsFromArray:self.tweets] mutableCopy];
             [self.tweetList.pullToRefreshView stopAnimating];
@@ -91,6 +101,7 @@
     TweetViewCell* cell = [self.tweetList dequeueReusableCellWithIdentifier:@"TweetViewCell"];
     [cell initWithTweet:self.tweets[indexPath.row] parent:self];
     cell.delegate = self;
+    cell.profileViewDelegate = self;
     return cell;
 }
 
@@ -114,8 +125,14 @@
 }
 
 -(void) hamburgerMenuCalled:(id) sender {
-    
+    if(self.view.frame.origin.x > 0){
+        [self.delegate closeMenu:nil withUser:nil];
+    }else{
+        [self.delegate openMenu];
+    }
 }
+
+
 
 - (void)composeClicked:(id)sender {
     NewTweetViewController  *vc = [[NewTweetViewController alloc]init];
@@ -147,6 +164,10 @@
     UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return newImage;
+}
+
+-(void) closeMenu:(NSString*) page withUser:(User*) user{
+    [self.delegate closeMenu:page withUser:user];
 }
 
 /*

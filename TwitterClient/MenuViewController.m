@@ -21,8 +21,9 @@
     // Do any additional setup after loading the view from its nib.
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    self.tableView.rowHeight = 100;
+    self.tableView.rowHeight = 40;
     [self.tableView registerNib:[UINib nibWithNibName:@"MenuControllerTableViewCell" bundle:nil] forCellReuseIdentifier:@"MenuCell"];
+    self.title=@"Menu";
     
 }
 
@@ -36,37 +37,45 @@
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 4;
+    return 20;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     MenuControllerTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"MenuCell"];
     switch (indexPath.row) {
         case 0:
-            cell.MenuItem.text = @"Home Timeline";
-       //     [cell.imageView initWithImage:[UIImage imageNamed:@"home.png"]];
+            cell.menuLabel.text = @"Home";
             break;
         case 1:
-             cell.MenuItem.text = @"Profile";
-       //     [cell.imageView initWithImage:[UIImage imageNamed:@"me.png"]];
+             cell.menuLabel.text = @"Profile";
             break;
         case 2:
-             cell.MenuItem.text = @"Mentions";
-       //     [cell.imageView initWithImage:[UIImage imageNamed:@"mention.png"]];
+             cell.menuLabel.text = @"Mentions";
+            break;
+        case 3:
+            cell.menuLabel.text = @"Sign Out";
             break;
         default:
-            cell.MenuItem.text = @"Sign Out";
+            cell.menuLabel.text =@"";
             break;
     }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     switch (indexPath.row) {
         case 0:
+            //Home timeline
+            [self.delegate closeMenu:@"home" withUser:nil];
+            break;
         case 1:
+            //ProfileView
+            [self.delegate closeMenu:@"profile" withUser:[User currentuser]];
+            break;
         case 2:
-           // [self.slidableMenuController onMenuSelect:indexPath.row];
+            //Mentions
+            [self.delegate closeMenu:@"mentions" withUser:nil];
             break;
         default:
             [User logOut];

@@ -13,19 +13,18 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="skx-H9-WeE">
-                        <rect key="frame" x="25" y="14" width="279" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="skx-H9-WeE">
+                        <rect key="frame" x="8" y="11" width="279" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
+                        <color key="textColor" red="0.96178432622832533" green="1" blue="0.97866164866027272" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="highlightedColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </label>
                 </subviews>
                 <color key="backgroundColor" red="0.028274726099307021" green="0.041601672378891154" blue="0.30815972222222221" alpha="1" colorSpace="calibratedRGB"/>
             </tableViewCellContentView>
             <connections>
-                <outlet property="MenuCell" destination="H2p-sc-9uM" id="fJB-Dy-3v6"/>
-                <outlet property="MenuItem" destination="skx-H9-WeE" id="5Xl-kY-cql"/>
+                <outlet property="menuLabel" destination="skx-H9-WeE" id="y5N-IW-Fgj"/>
             </connections>
             <point key="canvasLocation" x="560" y="277"/>
         </tableViewCell>

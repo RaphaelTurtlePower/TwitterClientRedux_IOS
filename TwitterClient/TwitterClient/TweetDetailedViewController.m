@@ -36,7 +36,7 @@
     UIBarButtonItem* cancel = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(onCancel)];
     self.navigationItem.leftBarButtonItem = cancel;
     
-    
+    self.title = @"Details";
 }
 
 - (void)didReceiveMemoryWarning {

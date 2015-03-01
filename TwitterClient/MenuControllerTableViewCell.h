@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface MenuControllerTableViewCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *MenuItem;
-@property (weak, nonatomic) IBOutlet UIView *MenuCell;
+@property (weak, nonatomic) IBOutlet UILabel *menuLabel;
+
 @end

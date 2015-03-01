@@ -12,6 +12,10 @@
 #import "TwitterClient.h"
 #import "NewTweetViewController.h"
 
+@interface TweetViewCell ()
+
+@end
+
 @implementation TweetViewCell
 
 - (void)awakeFromNib {
@@ -42,7 +46,17 @@
     self.tweetTimestamp.text = [timeIntervalFormatter stringForTimeInterval:timeInterval]; // "yesterday"
     
     [self.profileImage setImageWithURL:tweet.imageURL];
+    UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(profileImageClicked:)];
+    singleTap.numberOfTapsRequired = 1;
+    singleTap.numberOfTouchesRequired = 1;
+    
+    [self.profileImage addGestureRecognizer:singleTap];
+    [self.profileImage setUserInteractionEnabled:YES];
+}
 
+-(void)profileImageClicked:(id) sender{
+    NSLog(@"Profile Image Clicked triggered");
+    [self.profileViewDelegate closeMenu:@"profile" withUser:self.tweet.user];
 }
 
 - (IBAction)onRetweet:(id)sender {

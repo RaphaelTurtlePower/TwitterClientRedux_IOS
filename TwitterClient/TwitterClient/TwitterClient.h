@@ -14,7 +14,7 @@
 + (TwitterClient*) sharedInstance;
 - (void)loginWithCompletion:(void (^)(User *user, NSError *error))completion;
 - (void)openURL:(NSURL *)url;
-- (void)homeTimelineWithParams:(NSDictionary *)params completion:(void(^)(NSArray *tweets, NSError *error))completion;
+- (void)getTimelineWithParams:(NSDictionary *)params home:(BOOL)home completion:(void(^)(NSArray *tweets, NSError *error))completion;
 - (void)sendTweet:(NSDictionary *)params completion:(void(^)(Tweet *tweet, NSError *error))completion;
 -(void)reTweet:(NSString*)tweetId completion:(void (^)(NSDictionary *result, NSError *error))completion;
 -(void)favoriteTweet:(NSDictionary*)params favorite:(BOOL)favorite completion:(void (^)(NSDictionary *result, NSError *error))completion;
